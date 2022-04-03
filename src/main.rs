@@ -17,7 +17,7 @@ fn main() {
 }
 
 fn read_file_lines(path: &str) -> Result<Vec<String>, Box<dyn Error>> {
-    let content = fs::read_to_string(path)?.clone();
+    let content = fs::read_to_string(path)?;
     let lines = content.lines().map(|l| l.to_string()).collect();
     Ok(lines)
 }
