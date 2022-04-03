@@ -11,11 +11,8 @@ fn main() {
     println!("Comparando {archivo1} con {archivo2}");
 
     if let Ok(lines1) = read_file_lines(archivo1) {
-        println!("{:?}", lines1);
         if let Ok(lines2) = read_file_lines(archivo2) {
-            println!("{:?}", lines2);
             let c = longest_common_subsequence(&lines1, &lines2);
-            println!("{:?}", c);
             print_diff(&c, &lines1, &lines2, lines1.len(), lines2.len())
         }
     } else {
@@ -36,7 +33,6 @@ fn longest_common_subsequence(x: &Vec<String>, y: &Vec<String>) -> Vec<Vec<i32>>
 
     for (i, _) in x.iter().enumerate().take(m) {
         for (j, _) in y.iter().enumerate().take(n) {
-            println!("{} - {}", x[i], y[j]);
             if x[i] == y[j] {
                 c[i + 1][j + 1] = c[i][j] + 1;
             } else {
