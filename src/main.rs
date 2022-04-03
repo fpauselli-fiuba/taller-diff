@@ -26,7 +26,7 @@ fn read_file_lines(path: &str) -> Result<Vec<String>, Box<dyn Error>> {
     Ok(lines)
 }
 
-fn longest_common_subsequence(x: &Vec<String>, y: &Vec<String>) -> Vec<Vec<i32>> {
+fn longest_common_subsequence(x: &[String], y: &[String]) -> Vec<Vec<i32>> {
     let m = x.len();
     let n = y.len();
     let mut c: Vec<Vec<i32>> = vec![vec![0; n + 1]; m + 1];
@@ -43,7 +43,7 @@ fn longest_common_subsequence(x: &Vec<String>, y: &Vec<String>) -> Vec<Vec<i32>>
     c
 }
 
-fn print_diff(c: &Vec<Vec<i32>>, x: &Vec<String>, y: &Vec<String>, i: usize, j: usize) {
+fn print_diff(c: &[Vec<i32>], x: &[String], y: &[String], i: usize, j: usize) {
     if i > 0 && j > 0 && x[i - 1] == y[j - 1] {
         print_diff(c, x, y, i - 1, j - 1);
         println!(" {}", x[i - 1]);
@@ -54,6 +54,6 @@ fn print_diff(c: &Vec<Vec<i32>>, x: &Vec<String>, y: &Vec<String>, i: usize, j: 
         print_diff(c, x, y, i - 1, j);
         println!("< {}", x[i - 1]);
     } else {
-        println!("")
+        println!();
     }
 }
