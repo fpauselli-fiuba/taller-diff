@@ -1,9 +1,15 @@
-use diff::{Config, LCS};
+pub mod config;
+pub mod file_reader;
+pub mod lcs;
+
 use std::process;
+
+use crate::config::config::Config;
+use crate::lcs::lcs::LCS;
 
 /// # Diff utilizando el algoritmo LCS
 ///
-/// Programa básico para calcular la subsecuencia máß larga entre dos archivos con el algoritmo LCS
+/// Programa básico para calcular la subsecuencia más larga entre dos archivos con el algoritmo LCS
 ///
 /// ## Modo de uso:
 /// ```bash
