@@ -75,13 +75,13 @@ impl LCS {
     fn print_diff_place(&self, i: usize, j: usize) {
         if i > 0 && j > 0 && self.lines_file1[i - 1] == self.lines_file2[j - 1] {
             self.print_diff_place(i - 1, j - 1);
-            println!(" {}", self.lines_file1[i - 1]);
+            println!("\x1b[36m {}\x1b[0m", self.lines_file1[i - 1]);
         } else if j > 0 && (i == 0 || self.lcs_grid[i][j - 1] >= self.lcs_grid[i - 1][j]) {
             self.print_diff_place(i, j - 1);
-            println!("> {}", &self.lines_file2[j - 1]);
+            println!("\x1b[32m> {}\x1b[0m", &self.lines_file2[j - 1]);
         } else if i > 0 && (j == 0 || self.lcs_grid[i][j - 1] < self.lcs_grid[i - 1][j]) {
             self.print_diff_place(i - 1, j);
-            println!("< {}", self.lines_file1[i - 1]);
+            println!("\x1b[31m< {}\x1b[0m", self.lines_file1[i - 1]);
         } else {
             println!();
         }

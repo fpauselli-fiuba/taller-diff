@@ -17,11 +17,11 @@ use crate::lcs::LCS;
 /// ```
 fn main() {
     let config = Config::new().unwrap_or_else(|err| {
-        eprintln!("Error: {}", err);
+        eprintln!("\x1b[31mError: {}\x1b[0m", err);
         process::exit(1);
     });
     let longest_common_subsequence = LCS::new(config).unwrap_or_else(|err| {
-        eprintln!("Error leyendo archivos: {}", err);
+        eprintln!("\x1b[31mError leyendo archivos: {}\x1b[0m", err);
         process::exit(1);
     });
     longest_common_subsequence.print_diff()
