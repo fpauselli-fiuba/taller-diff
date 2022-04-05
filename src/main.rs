@@ -4,8 +4,8 @@ pub mod lcs;
 
 use std::process;
 
-use crate::config::config::Config;
-use crate::lcs::lcs::LCS;
+use crate::config::Config;
+use crate::lcs::LCS;
 
 /// # Diff utilizando el algoritmo LCS
 ///
