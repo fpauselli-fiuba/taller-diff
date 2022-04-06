@@ -1,8 +1,8 @@
 use std::cmp;
 use std::error::Error;
 
+use crate::config::Config;
 use crate::file_reader::FileReader;
-use crate::Config;
 
 /// Struct con la información y lógica para calcular el algoritmo LCS
 ///
@@ -13,7 +13,7 @@ use crate::Config;
 /// - lines_file2: Vector con las líneas del segundo archivo,
 /// - len_file2: Cantidad de líneas del segundo archivo,
 /// - lcs_grid: Grilla computada del algoritmo LCS,
-pub struct LCS {
+pub struct Lcs {
     lines_file1: Vec<String>,
     len_file1: usize,
     lines_file2: Vec<String>,
@@ -21,18 +21,18 @@ pub struct LCS {
     lcs_grid: Vec<Vec<i32>>,
 }
 
-impl LCS {
+impl Lcs {
     /// Genera un LCS válido. En caso de no encontrar alguno de los archivos, devuelve error de lectura.
     ///
     /// Parámetros:
     /// - `config: Config` Struct de configuración válido
     ///
     /// La función se encarga de buscar y leer los archivos pasados en config, y calcular la grilla de LCS
-    pub fn new(config: Config) -> Result<LCS, Box<dyn Error>> {
+    pub fn new(config: Config) -> Result<Lcs, Box<dyn Error>> {
         let lines_file1 = FileReader::read_file_lines(&config.file1)?;
         let lines_file2 = FileReader::read_file_lines(&config.file2)?;
         let lcs_grid = Self::longest_common_subsequence(&lines_file1, &lines_file2);
-        Ok(LCS {
+        Ok(Lcs {
             len_file1: lines_file1.len(),
             len_file2: lines_file2.len(),
             lines_file1,
